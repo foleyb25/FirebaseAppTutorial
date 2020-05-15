@@ -12,8 +12,10 @@
 		05471153246C9B02004F97C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05471152246C9B02004F97C8 /* Assets.xcassets */; };
 		05471156246C9B02004F97C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05471154246C9B02004F97C8 /* LaunchScreen.storyboard */; };
 		05471160246CA05C004F97C8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0547115F246CA05C004F97C8 /* LoginController.swift */; };
-		05471164246CA938004F97C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05471163246CA938004F97C8 /* ViewController.swift */; };
+		05471164246CA938004F97C8 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05471163246CA938004F97C8 /* MessageController.swift */; };
 		05471166246DB605004F97C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05471165246DB605004F97C8 /* GoogleService-Info.plist */; };
+		05EF00BA246F45DE000C82D3 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EF00B9246F45DE000C82D3 /* NewMessageController.swift */; };
+		05EF00BC246F59B8000C82D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EF00BB246F59B8000C82D3 /* User.swift */; };
 		4E2DDD6FE5DFBBD31C19F69B /* Pods_FirebaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21D2BA3E723A5C569FA1149 /* Pods_FirebaseApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +27,10 @@
 		05471155246C9B02004F97C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05471157246C9B02004F97C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0547115F246CA05C004F97C8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		05471163246CA938004F97C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		05471163246CA938004F97C8 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		05471165246DB605004F97C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		05EF00B9246F45DE000C82D3 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		05EF00BB246F59B8000C82D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6C8A2F25AA2D7F33BA93798E /* Pods-FirebaseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseApp.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A21D2BA3E723A5C569FA1149 /* Pods_FirebaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222688C9E57E3532FA8EDAE /* Pods-FirebaseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseApp.release.xcconfig"; path = "Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,7 +71,9 @@
 			children = (
 				05471149246C9AFD004F97C8 /* AppDelegate.swift */,
 				0547114B246C9AFD004F97C8 /* SceneDelegate.swift */,
-				05471163246CA938004F97C8 /* ViewController.swift */,
+				05471163246CA938004F97C8 /* MessageController.swift */,
+				05EF00B9246F45DE000C82D3 /* NewMessageController.swift */,
+				05EF00BB246F59B8000C82D3 /* User.swift */,
 				0547115F246CA05C004F97C8 /* LoginController.swift */,
 				05471152246C9B02004F97C8 /* Assets.xcassets */,
 				05471154246C9B02004F97C8 /* LaunchScreen.storyboard */,
@@ -209,7 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05471164246CA938004F97C8 /* ViewController.swift in Sources */,
+				05EF00BA246F45DE000C82D3 /* NewMessageController.swift in Sources */,
+				05471164246CA938004F97C8 /* MessageController.swift in Sources */,
+				05EF00BC246F59B8000C82D3 /* User.swift in Sources */,
 				0547114A246C9AFD004F97C8 /* AppDelegate.swift in Sources */,
 				0547114C246C9AFD004F97C8 /* SceneDelegate.swift in Sources */,
 				05471160246CA05C004F97C8 /* LoginController.swift in Sources */,
