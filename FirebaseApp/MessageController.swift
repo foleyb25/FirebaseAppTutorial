@@ -44,7 +44,7 @@ class MessageController: UITableViewController {
             Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value) { (snapshot) in
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-                    self.navigationItem.title = dictionary["name"] as? String
+                    self.navigationItem.title = dictionary["username"] as? String
                 }
                 
             }

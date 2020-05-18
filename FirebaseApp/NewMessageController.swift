@@ -26,7 +26,9 @@ class NewMessageController: UITableViewController {
     }
     
     func fetchUser() {
-        Database.database().reference().child("users").observeSingleEvent(of: .childAdded, with: { (snapshot) in
+        Database.database().reference().child("users").observe( .childAdded, with: { (snapshot) in
+            
+            print(snapshot)
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = User()
@@ -34,6 +36,7 @@ class NewMessageController: UITableViewController {
                 //user.setValuesForKeys(dictionary)
                 user.username = dictionary["username"] as? String
                 user.email = dictionary["email"] as? String
+                user.profileURL = dictionary["profileImage"] as? String
                 self.users.append(user)
                 
                 DispatchQueue.main.async {

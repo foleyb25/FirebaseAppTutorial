@@ -70,11 +70,17 @@ class LoginController: UIViewController {
         return textView
     }()
     
-    let imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "logo_no_bg")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
+        image.isUserInteractionEnabled = true
+        print("Adding gesture recognizer")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectorProfileImageView))
+        //let pinchGesture = UIPinchGestureRecognizer(target: target, action: #selector(handleSelectorProfileImageView))
+        image.addGestureRecognizer(tapGesture)
+        
         return image
     }()
     
@@ -103,6 +109,7 @@ class LoginController: UIViewController {
         var preferredStatusBarStyle: UIStatusBarStyle {return .lightContent }
         setupTapGesture()
         view.addSubview(imageView)
+        imageView.isUserInteractionEnabled = true
         view.addSubview(registerSegmentedControl)
         view.addSubview(inputsContainerView)
         inputsContainerView.addSubview(nameView)
@@ -112,6 +119,7 @@ class LoginController: UIViewController {
         inputsContainerView.addSubview(passwordView)
         view.addSubview(registerButton)
         view.addSubview(errorMessageField)
+        imageView.layer.zPosition = -1
         setupConstraints()
         handleSegmentedControl()
     }
@@ -135,39 +143,6 @@ class LoginController: UIViewController {
         UIView.animate(withDuration: 0.33, delay: 0, options: .beginFromCurrentState, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
-    }
-    
-    @objc func handleRegister() {
-        guard let email = emailView.text, let password = passwordView.text, let name = nameView.text, !email.isEmpty, !password.isEmpty, !name.isEmpty else {
-            errorMessageField.text = "Missing Field"
-            return
-        }
-        print(email)
-        print(password)
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            if error != nil {
-                self.errorMessageField.text = error?.localizedDescription
-                print(error!)
-                return
-            }
-     
-            guard let uid = Auth.auth().currentUser?.uid else {
-                return
-            }
-            
-            self.ref = Database.database().reference()
-            let usersReference = self.ref.child("users").child(uid)
-            let values = ["username": name, "email": email]
-            usersReference.updateChildValues(values) { (err, ref) in
-                if err != nil {
-                    print(err!)
-                    return
-                }
-                
-                self.dismiss(animated: true, completion: nil)
-            }
-        })
-        
     }
     
     @objc func handleLoginRegister() {
@@ -214,8 +189,8 @@ class LoginController: UIViewController {
     func setupConstraints() {
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: registerSegmentedControl.topAnchor, constant: -12).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 170).isActive = true
         
         registerSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         registerSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
@@ -269,3 +244,4 @@ class LoginController: UIViewController {
     }
 
 }
+
