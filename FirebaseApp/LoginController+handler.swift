@@ -17,8 +17,6 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
             return
         }
         
-        print(email)
-        print(password)
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
                 self.errorMessageField.text = error?.localizedDescription
@@ -32,8 +30,9 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
             
             let imageName = NSUUID().uuidString
             
-            let storageRef = Storage.storage().reference().child("profilePictures").child(imageName)
-            if let uploadData = self.imageView.image!.pngData() {
+            let storageRef = Storage.storage().reference().child("profilePictures").child("\(imageName).jpg")
+            
+            if let imageViewImage = self.imageView.image, let uploadData = imageViewImage.jpegData(compressionQuality: 0.1)  {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 
                     if error != nil {
@@ -70,7 +69,10 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                    print(err!)
                    return
                }
-               
+            let user = User(dictionary: values)
+            self.MessagesController?.setupNavBarWithUser(user: user)
+                
+            
                self.dismiss(animated: true, completion: nil)
            }
     }

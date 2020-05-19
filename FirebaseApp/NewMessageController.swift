@@ -31,12 +31,10 @@ class NewMessageController: UITableViewController {
             print(snapshot)
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let user = User()
-                
+            
+                let user = User(dictionary: dictionary)
+                user.userId = snapshot.key
                 //user.setValuesForKeys(dictionary)
-                user.username = dictionary["username"] as? String
-                user.email = dictionary["email"] as? String
-                user.profileURL = dictionary["profileImage"] as? String
                 self.users.append(user)
                 
                 DispatchQueue.main.async {
@@ -70,13 +68,21 @@ class NewMessageController: UITableViewController {
         if let profileImageUrl = user.profileURL {
             cell.profileImageView.loadImageUsingCacheWithURL(urlString: profileImageUrl)
         }
-        
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    var messagesController: MessageController?
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dismiss(animated: false) {
+            let user = self.users[indexPath.row]
+            self.messagesController?.showChatController(user: user)
+        
+        }
     }
 }
 

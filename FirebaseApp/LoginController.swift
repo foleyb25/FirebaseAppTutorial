@@ -13,6 +13,7 @@ import Firebase
 class LoginController: UIViewController {
 
     var ref: DatabaseReference!
+    var MessagesController: MessageController?
     
     let inputsContainerView: UIView = {
         let view = UIView()
@@ -24,8 +25,9 @@ class LoginController: UIViewController {
     }()
     
     let registerButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor.gray
+        button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
@@ -165,6 +167,8 @@ class LoginController: UIViewController {
                 print(error!)
                 return
             }
+            
+            self.MessagesController?.fetchUserAndSetNavItem()
             
             self.dismiss(animated: true, completion: nil)
         }
